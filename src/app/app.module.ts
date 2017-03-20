@@ -7,7 +7,6 @@ import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { AppComponent } from './app.component';
 import { UserFactory } from './models/UserFacroty';
 import { ServerFactory } from './models/ServerFactory';
-import { WebsocketService } from './services/websocket.service';
 @NgModule({
   declarations: [
     AppComponent
@@ -17,7 +16,7 @@ import { WebsocketService } from './services/websocket.service';
     FormsModule,
     HttpModule
   ],
-  providers: [CookieService,WebsocketService, UserFactory, ServerFactory],
+  providers: [CookieService, UserFactory, ServerFactory],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

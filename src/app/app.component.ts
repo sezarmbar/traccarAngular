@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { URLSearchParams , Http, Headers,Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 import { Cookie } from 'ng2-cookies';
-import { WebsocketService } from './services/websocket.service';
 import { Subject, Observable, Subscription } from 'rxjs/Rx';
 import { UserFactory } from './models/UserFacroty';
 import { ServerFactory } from './models/ServerFactory';
@@ -23,8 +22,14 @@ export class AppComponent {
   checkName: string = 'email';
   user: any;
   server:any;
+private socket: Subject<any>;
+private counterSubscription: Subscription;
+private message: string;
+private sentMessage: string;
 
-  constructor(private http: Http, private userFactory : UserFactory, private serverFactory:ServerFactory) { }
+  constructor(
+              private http: Http, private userFactory: UserFactory,
+              private serverFactory: ServerFactory) { }
 
 ngOnInit() {
   this.Server();
